@@ -32,9 +32,22 @@ public class ArticleController {
     }
 @GetMapping()
     public ResponseEntity<List<Article>> getArticle(){
+
         List<Article> articles = articleService.findAll();
+
     return ResponseEntity
             .status(HttpStatus.OK)
             .body(articles);
     }
+
+ @GetMapping("/{id}")
+    public ResponseEntity<Article> getArticle(@PathVariable Long id){
+    Article article = articleService.findById(id);
+
+    return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(article);
+ }
+
+
 }
