@@ -37,7 +37,7 @@ public class ArticleController {
     /*게시글 단일 조회*/
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse> ReadArticle(@PathVariable long id){
-        ArticleResponse response=articleService.getArticle(id);
+        ArticleDetailResponse response = articleService.getArticle(id);
         return ResponseEntity.ok(new ApiResponse(true,200,"게시글 조회 성공", response));
 
     }
