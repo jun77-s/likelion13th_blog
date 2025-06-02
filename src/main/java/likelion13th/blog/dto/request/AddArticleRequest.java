@@ -1,23 +1,27 @@
-package likelion13th.blog.dto;
+package likelion13th.blog.dto.request;
 
 import likelion13th.blog.domain.Article;
-import likelion13th.blog.domain.Comment;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Getter
-public class AddCommentRequest {
+@NoArgsConstructor
+@AllArgsConstructor
+public class AddArticleRequest {
+    private String title;
     private String content;
     private String author;
     private String password;
 
-    public Comment toEntity(Article article){
-        return Comment.builder()
+    public Article toEntity(){
+        return Article.builder()
+                .title(title)
                 .content(content)
                 .author(author)
                 .password(password)
-                .article(article)
                 .createdAt(LocalDateTime.now())
                 .build();
     }
